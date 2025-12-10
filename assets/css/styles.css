@@ -1655,8 +1655,8 @@ body {
 
 @media (max-width: 600px) {
     .floating-whatsapp {
-        right: 16px;
-        bottom: 16px;
+        right: 14px;
+        bottom: 26px;
     }
 
     .floating-whatsapp span {
@@ -1664,7 +1664,16 @@ body {
     }
 
     .floating-whatsapp a {
-        padding: 14px;
+        width: 62px;
+        height: 62px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 50%;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .floating-whatsapp i {
+        font-size: 26px;
     }
 }
 
