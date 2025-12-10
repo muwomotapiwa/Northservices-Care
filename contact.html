@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | NorthServices Care Givers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+
+<nav class="main-nav">
+    <a href="index.html" class="logo"><i class="fas fa-hands-helping"></i> NorthServices</a>
+    <div class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="why-us.html">Why Us</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="#emergency-section" class="nav-btn">Emergency Line</a>
+    </div>
+</nav>
+
+<header class="page-header contact-header">
+    <h1>Connect With Our Care Team</h1>
+    <p>Whether you are ready to book a consultation or just have a question, our dedicated coordinators are here to help 24 hours a day.</p>
+</header>
+
+<section class="contact-main">
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2>Direct Contact Details</h2>
+            <p class="intro">Reach out to us through any of these channels. We typically respond within 2 hours during business hours and within 30 minutes for urgent inquiries.</p>
+
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h3>24/7 Phone Support</h3>
+                        <p>Call us immediately for urgent needs, consultations, or emergency situations.</p>
+                        <p class="highlight">+27 81 555 0193</p>
+                        <p><small>Emergency line available 24 hours</small></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h3>General Enquiries</h3>
+                        <p>For non-urgent matters, documentation, or detailed questions.</p>
+                        <p class="highlight">support@northservices.co.za</p>
+                        <p><small>Response within 2–4 business hours</small></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h3>Office Hours</h3>
+                        <p><strong>Monday – Friday:</strong> 8:00 AM – 5:00 PM</p>
+                        <p><strong>Saturday:</strong> 9:00 AM – 1:00 PM</p>
+                        <p><strong>Emergency Line:</strong> 24/7 Available</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h3>Head Office Location</h3>
+                        <p>55 Caretaker Avenue, Sandton</p>
+                        <p>Johannesburg, 2191</p>
+                        <p>South Africa</p>
+                        <p class="highlight"><small>By appointment only</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form-container">
+            <h2>Send Us a Message</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Full Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="John Smith">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="john@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+27 81 555 0193">
+                </div>
+
+                <div class="form-group">
+                    <label for="service">I am interested in...</label>
+                    <select id="service" name="service">
+                        <option value="General">General Inquiry</option>
+                        <option value="Elderly">Elderly & Companion Care</option>
+                        <option value="Nursing">Home Nursing & Clinical Support</option>
+                        <option value="Disability">Disability & Special Needs Support</option>
+                        <option value="Dementia">Dementia Care</option>
+                        <option value="Respite">Respite Care</option>
+                        <option value="Other">Other Service</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="urgency">Urgency Level</label>
+                    <select id="urgency" name="urgency">
+                        <option value="Standard">Standard Inquiry (2–4 hour response)</option>
+                        <option value="Urgent">Urgent (within 1 hour)</option>
+                        <option value="Emergency">Emergency (immediate call back)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" name="message" required placeholder="Tell us about your care needs, preferred schedule, and any specific requirements..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="location-section">
+    <div class="location-container">
+        <h2>Our Location</h2>
+        <p>Visit our head office in Sandton, Johannesburg. Please note that visits are by appointment only to ensure we can give you our full attention.</p>
+
+        <div class="map-container">
+            <div class="map-placeholder">
+                <i class="fas fa-map-marked-alt"></i>
+                <h3>NorthServices Head Office</h3>
+                <p>55 Caretaker Avenue, Sandton, Johannesburg, 2191</p>
+                <p><small>By appointment only</small></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="emergency-section" id="emergency-section">
+    <div class="emergency-content">
+        <div class="emergency-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h2>Emergency Care Line</h2>
+        <p>If you have an urgent care need or emergency situation, please call our 24/7 emergency line immediately. Our team is trained to handle urgent situations and can dispatch caregivers quickly when needed.</p>
+        <a class="btn" href="tel:+27815550193"><i class="fas fa-phone-alt"></i> Emergency Line: +27 81 555 0193</a>
+    </div>
+</section>
+
+<section class="faq-section">
+    <div class="faq-container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How quickly can you start care services?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>For standard services, we can typically begin within 24–48 hours after the initial assessment. For emergency situations, we can often arrange care within 2–4 hours. The exact timeline depends on your specific needs and caregiver availability.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What areas do you serve?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>We primarily serve the Greater Johannesburg area including Sandton, Randburg, Rosebank, Bryanston, and surrounding suburbs. For specialised services, we may be able to arrange care in other areas—please contact us to discuss your location.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How are your caregivers vetted?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>All caregivers undergo rigorous screening including criminal background checks, reference verification, qualification validation, health screening, and comprehensive interviews. They also receive ongoing training and regular performance evaluations.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Can I meet the caregiver before services begin?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, we encourage a meet-and-greet session before services begin. This allows you to get to know the caregiver, discuss specific needs, and ensure it's a good match. There's no charge for this introductory meeting.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What happens if my regular caregiver is unavailable?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>We maintain a team of backup caregivers who are familiar with our standards and procedures. If your regular caregiver is unavailable, we will provide a suitable replacement and ensure they are fully briefed on your care plan.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="contact-footer grey-footer" id="contact-footer">
+    <h2>Ready to Start Your Care Journey?</h2>
+    <p>Our care coordinators are standing by to guide you through the process and answer any questions you may have about our services.</p>
+    <a class="btn" href="tel:+27815550193"><i class="fas fa-phone-alt"></i> Call Us Now: +27 81 555 0193</a>
+</footer>
+
+</body>
+</html>
