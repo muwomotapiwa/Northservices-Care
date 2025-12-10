@@ -133,6 +133,15 @@
                     <textarea id="message" name="message" required placeholder="Tell us about your care needs, preferred schedule, and any specific requirements..."></textarea>
                 </div>
 
+                <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px;">
+                    <input type="checkbox" id="agree" required aria-required="true" style="margin-top: 4px;">
+                    <label for="agree" style="margin: 0;">
+                        I have read and agree to the
+                        <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and
+                        <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+                    </label>
+                </div>
+
                 <button type="submit" class="submit-btn">Submit Inquiry</button>
             </form>
         </div>
@@ -243,6 +252,10 @@
             <h4>Co. Reg. No.</h4>
             <p>K2019326847</p>
         </div>
+        <div class="footer-contact-item">
+            <h4>Policies</h4>
+            <p><a href="terms.html">Terms of Service</a><br><a href="privacy.html">Privacy Policy</a></p>
+        </div>
     </div>
 </footer>
 
@@ -252,6 +265,16 @@
         <span>WhatsApp Chat</span>
     </a>
 </div>
+
+<script>
+document.getElementById('contactForm')?.addEventListener('submit', function (e) {
+    var agreeBox = document.getElementById('agree');
+    if (agreeBox && !agreeBox.checked) {
+        e.preventDefault();
+        alert('Please agree to the Terms of Service and Privacy Policy before submitting.');
+    }
+});
+</script>
 
 </body>
 </html>
