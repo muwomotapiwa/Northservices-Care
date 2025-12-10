@@ -1380,6 +1380,16 @@ body {
     opacity: 0.9;
 }
 
+.contact-footer a {
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.contact-footer a:hover {
+    color: #e6e6ff;
+}
+
 .footer-info {
     margin-top: 60px;
     padding-top: 30px;
