@@ -1613,6 +1613,61 @@ body {
     }
 }
 
+/* ===============================
+   10. FLOATING WHATSAPP WIDGET
+   =============================== */
+.floating-whatsapp {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 120;
+}
+
+.floating-whatsapp a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #25d366;
+    color: white;
+    padding: 14px 18px;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.floating-whatsapp a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+    background: #1ebe5b;
+}
+
+.floating-whatsapp i {
+    font-size: 24px;
+}
+
+.floating-whatsapp span {
+    font-size: 15px;
+    line-height: 1;
+}
+
+@media (max-width: 600px) {
+    .floating-whatsapp {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .floating-whatsapp span {
+        display: none;
+    }
+
+    .floating-whatsapp a {
+        padding: 14px;
+    }
+}
+
 /* Disable fixed background on mobile for better performance */
 @media (max-width: 768px) {
     .hero,
