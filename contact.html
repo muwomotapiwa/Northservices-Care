@@ -91,19 +91,27 @@
         <div class="contact-form-container">
             <h2>Send Us a Message</h2>
             <form id="contactForm">
+                <div class="honeypot">
+                    <label for="website">Leave this field empty</label>
+                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+                <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
                 <div class="form-group">
                     <label for="name">Your Full Name *</label>
                     <input type="text" id="name" name="name" required placeholder="John Smith">
+                    <div class="error-message" data-error-for="name"></div>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email Address *</label>
                     <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    <div class="error-message" data-error-for="email"></div>
                 </div>
 
                 <div class="form-group">
                     <label for="phone">Phone Number *</label>
                     <input type="tel" id="phone" name="phone" required placeholder="011 027 06475">
+                    <div class="error-message" data-error-for="phone"></div>
                 </div>
 
                 <div class="form-group">
@@ -131,6 +139,7 @@
                 <div class="form-group">
                     <label for="message">Your Message *</label>
                     <textarea id="message" name="message" required placeholder="Tell us about your care needs, preferred schedule, and any specific requirements..."></textarea>
+                    <div class="error-message" data-error-for="message"></div>
                 </div>
 
                 <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px;">
@@ -140,6 +149,7 @@
                         <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and
                         <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
                     </label>
+                    <div class="error-message" data-error-for="agree"></div>
                 </div>
 
                 <button type="submit" class="submit-btn">Submit Inquiry</button>

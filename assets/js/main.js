@@ -16,28 +16,92 @@ document.addEventListener('DOMContentLoaded', function () {
     // Contact form handling (Contact page only)
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
+        const statusBox = document.getElementById('formStatus');
+        const fields = {
+            name: document.getElementById('name'),
+            email: document.getElementById('email'),
+            phone: document.getElementById('phone'),
+            message: document.getElementById('message'),
+            agree: document.getElementById('agree'),
+            honeypot: document.getElementById('website')
+        };
+
+        const errorEls = {};
+        document.querySelectorAll('.error-message[data-error-for]').forEach(el => {
+            errorEls[el.getAttribute('data-error-for')] = el;
+        });
+
+        const validators = {
+            name: value => value.trim().length >= 2 ? '' : 'Please enter your full name.',
+            email: value => /^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,}$/i.test(value.trim()) ? '' : 'Enter a valid email address.',
+            phone: value => value.replace(/\\D/g, '').length >= 9 ? '' : 'Enter a valid phone number.',
+            message: value => value.trim().length >= 10 ? '' : 'Please provide a brief description of your needs.',
+            agree: checked => checked ? '' : 'Please confirm you agree to the Terms and Privacy Policy.'
+        };
+
+        const setError = (fieldKey, message) => {
+            const field = fields[fieldKey];
+            const errorEl = errorEls[fieldKey];
+            if (message) {
+                field?.classList.add('input-error');
+                if (errorEl) errorEl.textContent = message;
+            } else {
+                field?.classList.remove('input-error');
+                if (errorEl) errorEl.textContent = '';
+            }
+        };
+
+        const clearStatus = () => {
+            if (statusBox) {
+                statusBox.classList.remove('success', 'error');
+                statusBox.style.display = 'none';
+                statusBox.textContent = '';
+            }
+        };
+
+        const showStatus = (message, type = 'success') => {
+            if (!statusBox) return;
+            statusBox.textContent = message;
+            statusBox.classList.remove('success', 'error');
+            statusBox.classList.add(type);
+            statusBox.style.display = 'block';
+        };
+
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
+            clearStatus();
 
-            const name = document.getElementById('name')?.value || 'there';
+            if (fields.honeypot && fields.honeypot.value.trim() !== '') {
+                showStatus('Submission blocked.', 'error');
+                return;
+            }
+
+            let hasError = false;
+            Object.keys(validators).forEach(key => {
+                const field = fields[key];
+                const value = key === 'agree' ? field?.checked : field?.value || '';
+                const errorMsg = validators[key](value);
+                setError(key, errorMsg);
+                if (errorMsg) hasError = true;
+            });
+
+            if (hasError) {
+                showStatus('Please correct the highlighted fields.', 'error');
+                return;
+            }
+
+            const name = fields.name?.value.trim() || 'there';
             const urgency = document.getElementById('urgency')?.value || 'Standard';
-
-            let responseTime = '2-4 hours';
+            let responseTime = '2–4 hours';
             if (urgency === 'Emergency') responseTime = '15 minutes';
             if (urgency === 'Urgent') responseTime = '1 hour';
 
-            alert(
-                'Thank you for your inquiry, ' +
-                name +
-                '! We have received your message and will contact you as soon as possible.\n\n' +
-                'For ' +
-                urgency.toLowerCase() +
-                ' inquiries, we aim to respond within ' +
-                responseTime +
-                '.'
-            );
-
+            showStatus(`Thank you, ${name}! We have your inquiry. For ${urgency.toLowerCase()} requests, we aim to respond within ${responseTime}.`, 'success');
             contactForm.reset();
+        });
+
+        ['input', 'change', 'blur'].forEach(evt => {
+            contactForm.addEventListener(evt, () => clearStatus());
         });
     }
 });
