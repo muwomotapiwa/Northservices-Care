@@ -1367,6 +1367,10 @@ body {
     line-height: 1.7;
 }
 
+body.menu-open {
+    overflow: hidden;
+}
+
 /* ===============================
    10. GLOBAL CONTACT FOOTER
    =============================== */
@@ -1495,7 +1499,7 @@ body {
     }
 
     .main-nav .nav-links.active {
-        display: flex;
+        display: flex !important;
     }
 
     .main-nav .nav-links a {

@@ -4,12 +4,40 @@ document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.getElementById('navLinks');
 
     if (mobileMenuBtn && navLinks) {
-        mobileMenuBtn.addEventListener('click', function () {
+        mobileMenuBtn.setAttribute('role', 'button');
+        mobileMenuBtn.setAttribute('tabindex', '0');
+        mobileMenuBtn.setAttribute('aria-label', 'Toggle navigation menu');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+
+        const toggleMenu = () => {
             navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.contains('active');
+            mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            document.body.classList.toggle('menu-open', isOpen);
+        };
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        mobileMenuBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMenu();
+            }
         });
 
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('active'));
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('menu-open');
+            }
         });
     }
 
