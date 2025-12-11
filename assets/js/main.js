@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const toggleMenu = () => {
             const isOpen = navLinks.classList.toggle('active');
-            navLinks.style.display = isOpen ? 'flex' : 'none';
             mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
             document.body.classList.toggle('menu-open', isOpen);
         };
