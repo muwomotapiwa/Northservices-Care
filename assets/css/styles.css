@@ -208,15 +208,18 @@ body {
 .nav-whatsapp {
     display: none;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     color: var(--purple);
-    font-weight: 700;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .nav-whatsapp i {
-    font-size: 20px;
+    font-size: 24px;
+}
+
+.nav-whatsapp span {
+    display: none;
 }
 
 /* ===============================
@@ -1547,6 +1550,10 @@ body.menu-open {
 
     .mobile-footer-nav {
         display: flex;
+    }
+
+    .floating-whatsapp {
+        display: none;
     }
 
     .mobile-menu-btn {
