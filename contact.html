@@ -148,13 +148,15 @@
                     <div class="error-message" data-error-for="message"></div>
                 </div>
 
-                <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px;">
-                    <input type="checkbox" id="agree" required aria-required="true" style="margin-top: 4px;">
-                    <label for="agree" class="consent-label" style="margin: 0;">
-                        I have read and agree to the
-                        <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and
-                        <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
-                    </label>
+                <div class="form-group consent-stack">
+                    <label for="agree" class="consent-label">I have read and agree to the</label>
+                    <div class="consent-row">
+                        <input type="checkbox" id="agree" required aria-required="true">
+                        <span>
+                            <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and
+                            <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+                        </span>
+                    </div>
                     <div class="error-message" data-error-for="agree"></div>
                 </div>
 

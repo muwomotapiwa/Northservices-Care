@@ -1266,6 +1266,35 @@ body {
     text-underline-offset: 2px;
 }
 
+.consent-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.consent-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.consent-row input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+}
+
+.consent-row span {
+    color: #c53030;
+    font-weight: 600;
+}
+
+.consent-row span a {
+    color: #c53030;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 .honeypot {
     position: absolute;
     left: -5000px;
