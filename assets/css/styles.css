@@ -205,6 +205,20 @@ body {
     cursor: pointer;
 }
 
+.nav-whatsapp {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    color: var(--purple);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-whatsapp i {
+    font-size: 20px;
+}
+
 /* ===============================
    2. HERO (HOME)
    =============================== */
@@ -1536,7 +1550,7 @@ body.menu-open {
     }
 
     .mobile-menu-btn {
-        display: block;
+        display: none;
     }
 
     .main-nav .logo {
@@ -1574,6 +1588,14 @@ body.menu-open {
     .main-nav .nav-links .nav-btn {
         margin: 15px 0 0 0;
         text-align: center;
+    }
+
+    .nav-whatsapp {
+        display: flex;
+    }
+
+    .mobile-menu-btn {
+        display: none;
     }
 
     .hero h1 {
