@@ -1501,12 +1501,10 @@ body.menu-open {
         padding: 20px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         z-index: 150;
-        transition: opacity 0.2s ease;
     }
 
     .main-nav .nav-links.active {
         display: flex !important;
-        opacity: 1;
     }
 
     .main-nav .nav-links a {
