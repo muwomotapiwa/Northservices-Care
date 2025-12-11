@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                navLinks.style.display = 'none';
                 mobileMenuBtn.setAttribute('aria-expanded', 'false');
                 document.body.classList.remove('menu-open');
             });
@@ -35,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('click', (e) => {
             if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
-                navLinks.style.display = 'none';
                 mobileMenuBtn.setAttribute('aria-expanded', 'false');
                 document.body.classList.remove('menu-open');
             }
