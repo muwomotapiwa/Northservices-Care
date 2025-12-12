@@ -495,9 +495,10 @@ body {
 .page-header {
     background-size: cover;
     background-position: center;
-    padding: 120px 8%;
+    padding: 180px 8%;
     text-align: center;
     color: white;
+    min-height: 520px;
 }
 
 .page-header h1 {
