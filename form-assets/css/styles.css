@@ -739,6 +739,11 @@ textarea.form-control {
     margin-bottom: 5px;
 }
 
+.footer-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+}
+
 .sidebar {
     display: none;
 }
