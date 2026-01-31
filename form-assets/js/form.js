@@ -63,6 +63,7 @@ const sectionConfig = [
 // Track section completion status
 let sectionStatus = sectionConfig.map(() => false);
 let signaturePad;
+let isSubmitting = false;
 
 // ============================================
 // INITIALIZATION
@@ -148,8 +149,13 @@ function initFormValidation() {
     });
 
     // Form submission handler
-document.getElementById('clientContractForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    const submitBtn = document.getElementById('submitBtn');
+    const submitStatus = document.getElementById('submitStatus');
+    const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+
+    document.getElementById('clientContractForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        if (isSubmitting) return;
 
         // Check if all required sections are complete
         const allComplete = sectionStatus.every((status, index) => status || sectionConfig[index].optional);
@@ -173,11 +179,44 @@ document.getElementById('clientContractForm').addEventListener('submit', functio
         upsertHiddenInput(this, 'signature', signaturePad.toDataURL());
         upsertHiddenInput(this, 'submittedAt', new Date().toISOString());
 
-        // Success message
-        alert('Contract submitted successfully! Thank you for choosing NorthService Care.');
-        
-        // Submit to the form action (Google Apps Script web app)
-        this.submit();
+        // UI: show submitting state
+        isSubmitting = true;
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+            submitBtn.innerHTML = 'Submitting...';
+        }
+        if (submitStatus) {
+            submitStatus.classList.remove('incomplete');
+            submitStatus.classList.add('ready');
+            submitStatus.innerHTML = '<strong>Submitting...</strong><br>Please wait while we save your contract.';
+        }
+
+        const formData = new FormData(this);
+
+        try {
+            await fetch(this.action, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            });
+
+            // Redirect to local thank-you page so the Apps Script URL never shows in the browser
+            window.location.href = 'thank-you.html';
+        } catch (error) {
+            isSubmitting = false;
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+                submitBtn.innerHTML = originalBtnHTML || 'âœ“ Submit Contract';
+            }
+            if (submitStatus) {
+                submitStatus.classList.remove('ready');
+                submitStatus.classList.add('incomplete');
+                submitStatus.innerHTML = '<strong>Submission failed.</strong><br>Please check your connection and try again.';
+            }
+            alert('We could not submit the contract. Please check your connection and try again.');
+        }
     });
 }
 

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; script-src 'self'; img-src 'self' data: https://images.unsplash.com https://af6815798a.imgdist.com; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Thank You | NorthServices Care</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/main.js" defer></script>
+    <style>
+        .thankyou-hero {
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            padding-bottom: 120px;
+        }
+        .thankyou-card {
+            background: rgba(255, 255, 255, 0.96);
+            color: #2c2c2c;
+            border-radius: 18px;
+            padding: 40px 36px;
+            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.15);
+            max-width: 820px;
+            backdrop-filter: blur(4px);
+        }
+        .thankyou-card h1 {
+            color: var(--purple);
+            font-size: 44px;
+            margin-bottom: 16px;
+        }
+        .thankyou-card p.lead {
+            font-size: 18px;
+            color: #444;
+            margin-bottom: 18px;
+            line-height: 1.7;
+        }
+        .thankyou-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .thankyou-pill {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: #f5f0fb;
+            color: #4b1f61;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .thankyou-pill i {
+            color: var(--purple);
+            font-size: 18px;
+        }
+        .thankyou-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .thankyou-actions .btn {
+            flex: 1 1 220px;
+            text-align: center;
+        }
+        .thankyou-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 18px;
+        }
+        .thankyou-meta-item {
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: #f8f9fb;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+            font-size: 14px;
+        }
+        .thankyou-meta-item i {
+            color: var(--purple);
+        }
+        .thankyou-cta {
+            margin: 0;
+            text-align: center;
+            padding: 80px 8%;
+        }
+        .thankyou-cta .cta-card {
+            background: rgba(255, 255, 255, 0.94);
+            padding: 28px 26px;
+            border-radius: 14px;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #2c2c2c;
+        }
+        .thankyou-cta h2 {
+            margin-bottom: 12px;
+        }
+        .thankyou-cta p {
+            margin-bottom: 12px;
+        }
+        @media (max-width: 768px) {
+            .thankyou-card {
+                padding: 28px 24px;
+            }
+            .thankyou-card h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="main-nav">
+    <a href="index.html" class="logo"><i class="fas fa-hands-helping"></i> NorthServices Care</a>
+    <div class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </div>
+    <a class="nav-whatsapp" href="https://wa.me/27605023284?text=Hi%20NorthServices%20Care%2C%20I%27d%20like%20to%20discuss%20home%20care%20options.%20Please%20contact%20me." target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="why-us.html">Why Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="client-contract.html" class="nav-btn">Client Contract</a>
+    </div>
+</nav>
+
+<section class="hero thankyou-hero">
+    <div class="hero-content">
+        <div class="thankyou-card">
+            <h1>Thank you for submitting your contract.</h1>
+            <p class="lead">We received your details securely. Our care coordinator will review everything and reach out with next steps.</p>
+
+            <div class="thankyou-highlights">
+                <div class="thankyou-pill"><i class="fas fa-shield-alt"></i> Securely stored</div>
+                <div class="thankyou-pill"><i class="fas fa-file-signature"></i> Signature captured</div>
+                <div class="thankyou-pill"><i class="fas fa-clock"></i> We respond quickly</div>
+            </div>
+
+            <div class="thankyou-actions">
+                <a class="btn" href="index.html">Back to Home</a>
+                <a class="btn btn-secondary" href="client-contract.html">Submit Another Contract</a>
+            </div>
+
+            <div class="thankyou-meta">
+                <div class="thankyou-meta-item"><i class="fas fa-phone"></i> 011 027 06475 (24/7)</div>
+                <div class="thankyou-meta-item"><i class="fas fa-mobile-alt"></i> +27 83 271 7421 (WhatsApp)</div>
+                <div class="thankyou-meta-item"><i class="fas fa-envelope"></i> info@northservices.co.za</div>
+                <div class="thankyou-meta-item"><i class="fas fa-location-arrow"></i> Care in the patient’s home</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services-teaser thankyou-cta">
+    <div class="cta-card">
+        <h2>Need immediate assistance?</h2>
+        <p>We are ready to help you set up care, adjust schedules, or answer any questions about your submission.</p>
+        <div class="thankyou-actions" style="justify-content: center;">
+            <a class="btn" href="tel:+271102706475"><i class="fas fa-phone-alt"></i> Call Now</a>
+            <a class="btn btn-secondary" href="contact.html"><i class="fas fa-comment"></i> Message Us</a>
+        </div>
+    </div>
+</section>
+
+<footer class="contact-footer" id="contact-footer">
+    <h2>We’re here to support your family.</h2>
+    <p>Thank you for trusting NorthServices Care with this important step.</p>
+    <a class="btn" href="services.html"><i class="fas fa-stethoscope"></i> Explore Services</a>
+
+    <div class="footer-info">
+        <div class="footer-contact-item">
+            <h4>Primary Line</h4>
+            <p>011 027 06475</p>
+        </div>
+        <div class="footer-contact-item">
+            <h4>Mobile / WhatsApp</h4>
+            <p>063 380 0740</p>
+        </div>
+        <div class="footer-contact-item">
+            <h4>Email Address</h4>
+            <p>info@northservices.co.za</p>
+        </div>
+        <div class="footer-contact-item">
+            <h4>Co. Reg. No.</h4>
+            <p>K2019326847</p>
+        </div>
+        <div class="footer-contact-item">
+            <h4>Policies</h4>
+            <p><a href="terms.html">Terms of Service</a><br><a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </div>
+</footer>
+
+<div class="floating-whatsapp">
+    <a href="https://wa.me/27605023284?text=Hi%20NorthServices%20Care%2C%20I%27d%20like%20to%20discuss%20home%20care%20options.%20Please%20contact%20me." target="_blank" rel="noopener" aria-label="Chat with NorthServices Care on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp Chat</span>
+    </a>
+</div>
+
+<div class="mobile-footer-nav">
+    <a href="index.html">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </a>
+    <a href="services.html">
+        <i class="fas fa-stethoscope"></i>
+        <span>Services</span>
+    </a>
+    <a href="why-us.html">
+        <i class="fas fa-heart"></i>
+        <span>Why Us</span>
+    </a>
+    <a href="contact.html">
+        <i class="fas fa-phone-alt"></i>
+        <span>Contact</span>
+    </a>
+</div>
+
+</body>
+</html>

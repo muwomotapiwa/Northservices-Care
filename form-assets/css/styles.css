@@ -677,6 +677,10 @@ textarea.form-control {
     transform: none;
     box-shadow: none;
 }
+.submit-btn.loading {
+    cursor: progress;
+    opacity: 0.9;
+}
 
 .submit-status {
     margin-top: 15px;
