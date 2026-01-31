@@ -179,6 +179,16 @@ function initFormValidation() {
         upsertHiddenInput(this, 'signature', signaturePad.toDataURL());
         upsertHiddenInput(this, 'submittedAt', new Date().toISOString());
 
+        // Persist a lightweight copy to sessionStorage for the thank-you page
+        const formDataObj = {};
+        const fd = new FormData(this);
+        fd.forEach((val, key) => { formDataObj[key] = val; });
+        try {
+            sessionStorage.setItem('clientContractData', JSON.stringify(formDataObj));
+        } catch (err) {
+            console.warn('Could not persist form data for download copy:', err);
+        }
+
         // UI: show submitting state
         isSubmitting = true;
         if (submitBtn) {
@@ -532,6 +542,7 @@ function updateProgressIndicators() {
 function updateSubmitButton() {
     const submitBtn = document.getElementById('submitBtn');
     const submitStatus = document.getElementById('submitStatus');
+    const downloadBtn = document.getElementById('downloadContractBtn');
     
     const allComplete = sectionConfig.every((config, index) => 
         sectionStatus[index] || config.optional
@@ -544,6 +555,10 @@ function updateSubmitButton() {
         submitStatus.classList.remove('incomplete');
         submitStatus.classList.add('ready');
         submitStatus.innerHTML = '<strong>✅ Ready to Submit!</strong><br>All sections complete.';
+        if (downloadBtn) {
+            downloadBtn.disabled = false;
+            downloadBtn.classList.add('highlight');
+        }
     } else {
         submitBtn.disabled = true;
         submitStatus.classList.remove('ready');
@@ -560,6 +575,10 @@ function updateSubmitButton() {
         }
         
         submitStatus.innerHTML = `<strong>⚠️ Incomplete</strong><br>Missing: ${missingItems.join(', ')}`;
+        if (downloadBtn) {
+            downloadBtn.disabled = true;
+            downloadBtn.classList.remove('highlight');
+        }
     }
 }
 

@@ -166,6 +166,12 @@
                 <a class="btn btn-secondary" href="client-contract.html">Submit Another Contract</a>
             </div>
 
+            <div id="downloadCopy" style="display:none; margin-top:18px;">
+                <p style="margin-bottom:10px; font-weight:600; color:#4b1f61;">Download your submitted copy:</p>
+                <button class="btn" id="downloadCopyBtn" style="width:100%; text-align:center;">⬇ Download / Print Copy</button>
+                <div id="downloadSummary" style="margin-top:12px; font-size:14px; color:#444;"></div>
+            </div>
+
             <div class="thankyou-meta">
                 <div class="thankyou-meta-item"><i class="fas fa-phone"></i> 011 027 06475 (24/7)</div>
                 <div class="thankyou-meta-item"><i class="fas fa-mobile-alt"></i> +27 83 271 7421 (WhatsApp)</div>
@@ -243,4 +249,32 @@
 </div>
 
 </body>
+</html>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const dataRaw = sessionStorage.getItem('clientContractData');
+    if (!dataRaw) return;
+    let data;
+    try {
+        data = JSON.parse(dataRaw);
+    } catch(e) { return; }
+
+    const downloadBlock = document.getElementById('downloadCopy');
+    const summary = document.getElementById('downloadSummary');
+    const btn = document.getElementById('downloadCopyBtn');
+    if (!downloadBlock || !summary || !btn) return;
+
+    const safe = (v) => v ? v : 'N/A';
+    summary.innerHTML = `
+        <strong>Patient:</strong> ${safe(data.patientName)} &mdash; ${safe(data.patientCell)}<br>
+        <strong>Payer:</strong> ${safe(data.paymentName)} &mdash; ${safe(data.paymentCell)}<br>
+        <strong>Email:</strong> ${safe(data.paymentEmail)}<br>
+        <strong>Submitted:</strong> ${safe(data.submittedAt)}
+    `;
+
+    downloadBlock.style.display = 'block';
+    btn.addEventListener('click', () => window.print());
+});
+</script>
 </html>

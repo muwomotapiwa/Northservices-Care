@@ -681,6 +681,42 @@ textarea.form-control {
     cursor: progress;
     opacity: 0.9;
 }
+.download-btn {
+    width: 100%;
+    margin-top: 10px;
+    background: #ffffff;
+    color: var(--primary);
+    border: 2px dashed var(--primary);
+    padding: 14px 32px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+}
+.download-btn:hover:not(:disabled) {
+    background: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 12px 26px rgba(140, 82, 255, 0.25);
+}
+.download-btn:disabled {
+    border-color: #cbd5e0;
+    color: #a0aec0;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+.download-btn.highlight {
+    border-style: solid;
+    border-width: 2px;
+    animation: pulse-highlight 1.2s ease-in-out infinite;
+}
+@keyframes pulse-highlight {
+    0% { box-shadow: 0 0 0 0 rgba(118,48,153,0.35); }
+    70% { box-shadow: 0 0 0 12px rgba(118,48,153,0); }
+    100% { box-shadow: 0 0 0 0 rgba(118,48,153,0); }
+}
 
 .submit-status {
     margin-top: 15px;
