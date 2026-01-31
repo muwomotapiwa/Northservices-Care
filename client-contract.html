@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NorthService Care - Client Contract</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="form-assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo-container">
+                <div class="logo-left">
+                    <div class="ns-logo">
+                        <span class="n-letter">N</span>
+                        <span class="s-letter">S</span>
+                    </div>
+                    <div class="company-info">
+                        <div class="company-name">NorthService Care</div>
+                        <div class="company-details">
+                            <span>📍 Fourways, 2191</span>
+                            <span>📞 011 027 06475</span>
+                            <span>✉️ info@northservices.co.za</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="company-reg">
+                    Reg. No. K2019326847
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile/Tablet Progress Indicator -->
+    <div class="progress-container">
+        <div class="progress-steps" id="mobileProgressSteps">
+            <div class="progress-step active" data-section="0">
+                <span class="step-number"><span class="step-num-text">1</span></span>
+                <span>Patient</span>
+                <span class="step-lock">🔒</span>
+            </div>
+            <div class="progress-step" data-section="1">
+                <span class="step-number"><span class="step-num-text">2</span></span>
+                <span>Family 1</span>
+                <span class="step-lock">🔒</span>
+            </div>
+            <div class="progress-step" data-section="2">
+                <span class="step-number"><span class="step-num-text">3</span></span>
+                <span>Family 2</span>
+                <span class="step-lock">🔒</span>
+            </div>
+            <div class="progress-step" data-section="3">
+                <span class="step-number"><span class="step-num-text">4</span></span>
+                <span>Emergency</span>
+                <span class="step-lock">🔒</span>
+            </div>
+            <div class="progress-step" data-section="4">
+                <span class="step-number"><span class="step-num-text">5</span></span>
+                <span>Payment</span>
+                <span class="step-lock">🔒</span>
+            </div>
+            <div class="progress-step" data-section="5">
+                <span class="step-number"><span class="step-num-text">6</span></span>
+                <span>Terms</span>
+                <span class="step-lock">🔒</span>
+            </div>
+            <div class="progress-step" data-section="6">
+                <span class="step-number"><span class="step-num-text">7</span></span>
+                <span>Sign</span>
+                <span class="step-lock">🔒</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="content-wrapper">
+            <!-- Form Area -->
+            <div class="form-area">
+                <!-- Title Card -->
+                <div class="title-card">
+                    <div class="title-content">
+                        <h1 class="main-title">Client Contract</h1>
+                        <p class="subtitle">For Care in the Patient's Home</p>
+                    </div>
+                    <div class="ref-badge">
+                        <strong>Ref:</strong> <span id="refNumber">_____________</span>
+                    </div>
+                </div>
+
+                <form id="clientContractForm" novalidate>
+                    <!-- Patient Details Section -->
+                    <div class="form-section" id="section-0" data-section-index="0">
+                        <div class="section-header" onclick="toggleSection(this)">
+                            <h2 class="section-title">
+                                <span class="section-status">📝</span>
+                                Patient Details
+                            </h2>
+                            <span class="section-toggle">▼</span>
+                        </div>
+                        <div class="section-content">
+                            <div class="section-validation" id="validation-0">
+                                <span class="section-validation-icon">⚠️</span>
+                                <span>Please fill in all required fields marked with *</span>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <div class="radio-row">
+                                        <label class="radio-option">
+                                            <input type="radio" name="patientTitle" value="Mr" data-section="0">
+                                            <span>Mr.</span>
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="patientTitle" value="Mrs" data-section="0">
+                                            <span>Mrs.</span>
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="patientTitle" value="Ms" data-section="0">
+                                            <span>Ms.</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="required" for="patientName">Full Name</label>
+                                    <input type="text" id="patientName" class="form-control" placeholder="Patient's full name" required data-section="0">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="required" for="patientID">ID Number</label>
+                                    <input type="text" id="patientID" class="form-control" placeholder="ID Number" required data-section="0">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="required" for="patientAge">Age</label>
+                                    <input type="number" id="patientAge" class="form-control" placeholder="Age" required data-section="0" min="0" max="150">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="required">Gender</label>
+                                    <div class="radio-row">
+                                        <label class="radio-option">
+                                            <input type="radio" name="patientGender" value="M" required data-section="0">
+                                            <span>M</span>
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="patientGender" value="F" data-section="0">
+                                            <span>F</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="required" for="patientCell">Cell Phone</label>
+                                    <input type="tel" id="patientCell" class="form-control" placeholder="Cell number" required data-section="0">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="patientTelHome">Home Phone</label>
+                                    <input type="tel" id="patientTelHome" class="form-control" placeholder="Home number" data-section="0">
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label class="required" for="patientAddress">Address</label>
+                                    <textarea id="patientAddress" class="form-control" placeholder="Full address" rows="2" required data-section="0"></textarea>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="medicalHistory">Medical History</label>
+                                    <textarea id="medicalHistory" class="form-control" placeholder="Medical conditions, surgeries, treatments" rows="2" data-section="0"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="allergies">Allergies</label>
+                                    <textarea id="allergies" class="form-control" placeholder="Known allergies" rows="2" data-section="0"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="doctorDetails">Doctor's Details</label>
+                                    <textarea id="doctorDetails" class="form-control" placeholder="Doctor name & contact" rows="2" data-section="0"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Family Member 1 Section -->
+                    <div class="form-section locked" id="section-1" data-section-index="1">
+                        <div class="section-header" onclick="toggleSection(this)">
+                            <h2 class="section-title">
+                                <span class="section-status">🔒</span>
+                                Family Member 1
+                            </h2>
+                            <span class="section-toggle">▼</span>
+                        </div>
+                        <div class="section-content collapsed">
+                            <div class="section-validation" id="validation-1">
+                                <span class="section-validation-icon">⚠️</span>
+                                <span>Please fill in name and contact number</span>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="required" for="family1Name">Name</label>
+                                    <input type="text" id="family1Name" class="form-control" placeholder="Family member's name" required data-section="1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="family1Relationship">Relationship</label>
+                                    <input type="text" id="family1Relationship" class="form-control" placeholder="e.g., Son, Daughter" data-section="1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="required" for="family1Contact">Contact Number</label>
+                                    <input type="tel" id="family1Contact" class="form-control" placeholder="Phone number" required data-section="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Family Member 2 Section -->
+                    <div class="form-section locked" id="section-2" data-section-index="2">
+                        <div class="section-header" onclick="toggleSection(this)">
+                            <h2 class="section-title">
+                                <span class="section-status">🔒</span>
+                                Family Member 2 (Optional)
+                            </h2>
+                            <span class="section-toggle">▼</span>
+                        </div>
+                        <div class="section-content collapsed">
+                            <div class="section-validation" id="validation-2">
+                                <span class="section-validation-icon">ℹ️</span>
+                                <span>Optional - Fill if you have a second contact</span>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="family2Name">Name</label>
+                                    <input type="text" id="family2Name" class="form-control" placeholder="Family member's name" data-section="2">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="family2Relationship">Relationship</label>
+                                    <input type="text" id="family2Relationship" class="form-control" placeholder="e.g., Son, Daughter" data-section="2">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="family2Contact">Contact Number</label>
+                                    <input type="tel" id="family2Contact" class="form-control" placeholder="Phone number" data-section="2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Numbers Section -->
+                    <div class="form-section locked" id="section-3" data-section-index="3">
+                        <div class="section-header" onclick="toggleSection(this)">
+                            <h2 class="section-title">
+                                <span class="section-status">🔒</span>
+                                Emergency Contacts (Optional)
+                            </h2>
+                            <span class="section-toggle">▼</span>
+                        </div>
+                        <div class="section-content collapsed">
+                            <div class="section-validation" id="validation-3">
+                                <span class="section-validation-icon">ℹ️</span>
+                                <span>Add emergency numbers (ambulance, hospital)</span>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="emergencyNumbers">Emergency Contact Numbers</label>
+                                    <textarea id="emergencyNumbers" class="form-control" placeholder="List emergency contact numbers" rows="2" data-section="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Person Responsible for Payment Section -->
+                    <div class="form-section locked" id="section-4" data-section-index="4">
+                        <div class="section-header" onclick="toggleSection(this)">
+                            <h2 class="section-title">
+                                <span class="section-status">🔒</span>
+                                Payment Responsibility
+                            </h2>
+                            <span class="section-toggle">▼</span>
+                        </div>
+                        <div class="section-content collapsed">
+                            <p style="background: #fff3cd; padding: 8px 12px; border-radius: 4px; margin-bottom: 15px; font-size: 12px; color: #856404;">
+                                ⚠️ Complete if someone other than the patient is responsible for payment.
+                            </p>
+                            <div class="section-validation" id="validation-4">
+                                <span class="section-validation-icon">⚠️</span>
+                                <span>Please fill in all required payment details</span>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <div class="radio-row">
+                                        <label class="radio-option">
+                                            <input type="radio" name="paymentTitle" value="Mr" data-section="4">
+                                            <span>Mr.</span>
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="paymentTitle" value="Mrs" data-section="4">
+                                            <span>Mrs.</span>
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="paymentTitle" value="Ms" data-section="4">
+                                            <span>Ms.</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="required" for="paymentName">Full Name</label>
+                                    <input type="text" id="paymentName" class="form-control" placeholder="Full name" required data-section="4">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="required" for="paymentID">ID Number</label>
+                                    <input type="text" id="paymentID" class="form-control" placeholder="ID Number" required data-section="4">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="required" for="paymentCell">Cell Phone</label>
+                                    <input type="tel" id="paymentCell" class="form-control" placeholder="Cell phone" required data-section="4">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="paymentTelHome">Home Phone</label>
+                                    <input type="tel" id="paymentTelHome" class="form-control" placeholder="Home phone" data-section="4">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="paymentTelWork">Work Phone</label>
+                                    <input type="tel" id="paymentTelWork" class="form-control" placeholder="Work phone" data-section="4">
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label class="required" for="paymentAddress">Address</label>
+                                    <textarea id="paymentAddress" class="form-control" placeholder="Full address" rows="2" required data-section="4"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="required" for="paymentEmail">Email Address</label>
+                                    <input type="email" id="paymentEmail" class="form-control" placeholder="email@example.com" required data-section="4">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="paymentVAT">VAT Number</label>
+                                    <input type="text" id="paymentVAT" class="form-control" placeholder="VAT Number" data-section="4">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="heardAbout">How did you hear about us?</label>
+                                    <input type="text" id="heardAbout" class="form-control" placeholder="Referral source" data-section="4">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="costsQuoted">Costs & Hours Quoted</label>
+                                    <input type="text" id="costsQuoted" class="form-control" placeholder="Agreed costs" data-section="4">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="shiftsRequired">Shifts Required</label>
+                                    <input type="text" id="shiftsRequired" class="form-control" placeholder="Required shifts" data-section="4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms & Conditions Section -->
+                    <div class="form-section locked" id="section-5" data-section-index="5">
+                        <div class="section-header" onclick="toggleSection(this)">
+                            <h2 class="section-title">
+                                <span class="section-status">🔒</span>
+                                Terms & Conditions
+                            </h2>
+                            <span class="section-toggle">▼</span>
+                        </div>
+                        <div class="section-content collapsed">
+                            <div class="section-validation" id="validation-5">
+                                <span class="section-validation-icon">⚠️</span>
+                                <span>Please read and agree to the terms</span>
+                            </div>
+                            <div class="terms-section">
+                                <ul class="terms-list">
+                                    <li>All Patient Details are correct at time of signing.</li>
+                                    <li>Caregivers working 10+ hours require minimum 6 days off per month.</li>
+                                    <li>NorthService Care is not liable for damages if carer drives your car.</li>
+                                    <li>Carers may not use their own vehicle to transport patients.</li>
+                                    <li>No patient/family may employ our Carers within 6 months of contract end.</li>
+                                    <li>Caregiver change requests must be in writing.</li>
+                                    <li>NorthService Care does not carry liability insurance.</li>
+                                    <li>Not affiliated with medical aid companies.</li>
+                                    <li>Cancellation requires 48 hours' notice (excluding death).</li>
+                                    <li><strong>Public Holidays - Client charged double.</strong></li>
+                                    <li>Payment required within 7 days of invoice.</li>
+                                    <li>2 months non-payment results in service termination.</li>
+                                    <li>Handed-over accounts: you pay legal/collection fees + interest.</li>
+                                    <li>Payment due at month end. Overdue accounts accrue 2% interest.</li>
+                                    <li><strong>PAYMENT IS YOUR RESPONSIBILITY.</strong></li>
+                                </ul>
+                            </div>
+
+                            <div class="form-group" style="margin-top: 15px;">
+                                <label class="checkbox-option" style="padding: 12px;">
+                                    <input type="checkbox" id="agreeTerms" required data-section="5">
+                                    <span>I confirm I have read, understood, and agree to all terms and conditions.</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Signature Section -->
+                    <div class="form-section locked" id="section-6" data-section-index="6">
+                        <div class="section-header" onclick="toggleSection(this)">
+                            <h2 class="section-title">
+                                <span class="section-status">🔒</span>
+                                Signature
+                            </h2>
+                            <span class="section-toggle">▼</span>
+                        </div>
+                        <div class="section-content collapsed">
+                            <div class="section-validation" id="validation-6">
+                                <span class="section-validation-icon">⚠️</span>
+                                <span>Please sign and fill in your details</span>
+                            </div>
+                            <div class="signature-section">
+                                <div class="signature-notice">
+                                    <p>📝 <strong>By signing, you confirm:</strong> Payment due at month end • Overdue accounts accrue 2% interest • You are responsible for payment</p>
+                                </div>
+
+                                <div class="form-grid">
+                                    <div class="form-group full-width">
+                                        <label class="required">Signature</label>
+                                        <div class="signature-pad-container" id="signaturePadContainer">
+                                            <canvas id="signature-pad"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="signature-actions">
+                                    <button type="button" id="clearSignature" class="btn btn-secondary">
+                                        🗑️ Clear
+                                    </button>
+                                    <button type="button" id="downloadSignature" class="btn btn-primary">
+                                        💾 Download
+                                    </button>
+                                </div>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="required" for="signedByName">Printed Name</label>
+                                        <input type="text" id="signedByName" class="form-control" placeholder="Your full name" required data-section="6">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="required" for="signedByDate">Date</label>
+                                        <input type="date" id="signedByDate" class="form-control" required data-section="6">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="witnessName">Witness Name</label>
+                                        <input type="text" id="witnessName" class="form-control" placeholder="Witness name" data-section="6">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Section -->
+                    <div class="submit-section">
+                        <button type="submit" class="submit-btn" id="submitBtn" disabled>
+                            ✓ Submit Contract
+                        </button>
+                        <button type="button" class="print-btn-mobile" onclick="window.print()">
+                            🖨️ Print/Save as PDF
+                        </button>
+                        <div class="submit-status incomplete" id="submitStatus">
+                            <strong>⚠️ Form Incomplete</strong><br>
+                            Please complete all sections to submit.
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Print Footer -->
+                <div class="print-footer">
+                    COPYRIGHT © NORTH SERVICE CARE | Reg. No. K2019326847
+                </div>
+            </div>
+
+            <!-- Desktop Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">📊 Completion</h3>
+                    <div class="completion-text" id="completionText">0% Complete</div>
+                    <div class="completion-bar">
+                        <div class="completion-fill" id="completionFill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card sidebar-progress">
+                    <h3 class="sidebar-title">📋 Progress</h3>
+                    <div class="progress-steps" id="desktopProgressSteps">
+                        <div class="progress-step active" data-section="0">
+                            <span class="step-number"><span class="step-num-text">1</span></span>
+                            <span>Patient Details</span>
+                            <span class="step-lock">🔒</span>
+                        </div>
+                        <div class="progress-step" data-section="1">
+                            <span class="step-number"><span class="step-num-text">2</span></span>
+                            <span>Family Member 1</span>
+                            <span class="step-lock">🔒</span>
+                        </div>
+                        <div class="progress-step" data-section="2">
+                            <span class="step-number"><span class="step-num-text">3</span></span>
+                            <span>Family Member 2</span>
+                            <span class="step-lock">🔒</span>
+                        </div>
+                        <div class="progress-step" data-section="3">
+                            <span class="step-number"><span class="step-num-text">4</span></span>
+                            <span>Emergency Contacts</span>
+                            <span class="step-lock">🔒</span>
+                        </div>
+                        <div class="progress-step" data-section="4">
+                            <span class="step-number"><span class="step-num-text">5</span></span>
+                            <span>Payment Info</span>
+                            <span class="step-lock">🔒</span>
+                        </div>
+                        <div class="progress-step" data-section="5">
+                            <span class="step-number"><span class="step-num-text">6</span></span>
+                            <span>Terms & Conditions</span>
+                            <span class="step-lock">🔒</span>
+                        </div>
+                        <div class="progress-step" data-section="6">
+                            <span class="step-number"><span class="step-num-text">7</span></span>
+                            <span>Signature</span>
+                            <span class="step-lock">🔒</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">📄 Form Summary</h3>
+                    <div id="formSummary">
+                        <p style="font-size: 13px; color: var(--text-light); margin-bottom: 10px;">
+                            Complete the form to see summary.
+                        </p>
+                        <div id="summaryContent"></div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">📞 Need Help?</h3>
+                    <p style="font-size: 13px;"><strong>Phone:</strong> 011 027 06475</p>
+                    <p style="font-size: 13px;"><strong>Email:</strong> info@northservices.co.za</p>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Footer (Screen only) -->
+        <footer class="footer">
+            <p><strong>CEO: M Buteux</strong></p>
+            <p>COPYRIGHT © NORTH SERVICE CARE</p>
+        </footer>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+        <button class="quick-action-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to Top" aria-label="Scroll to top">
+            ↑
+        </button>
+        <button class="quick-action-btn print-btn" onclick="window.print()" title="Print/Save as PDF" aria-label="Print or save as PDF">
+            🖨️
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+    <script src="form-assets/js/form.js"></script>
+</body>
+</html>
