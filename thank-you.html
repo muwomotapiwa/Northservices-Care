@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/thank-you.js" defer></script>
     <style>
         .thankyou-hero {
             display: flex;
@@ -247,33 +248,6 @@
         <span>Contact</span>
     </a>
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const dataRaw = sessionStorage.getItem('clientContractData');
-    if (!dataRaw) return;
-    let data;
-    try {
-        data = JSON.parse(dataRaw);
-    } catch(e) { return; }
-
-    const downloadBlock = document.getElementById('downloadCopy');
-    const summary = document.getElementById('downloadSummary');
-    const btn = document.getElementById('downloadCopyBtn');
-    if (!downloadBlock || !summary || !btn) return;
-
-    const safe = (v) => v ? v : 'N/A';
-    summary.innerHTML = `
-        <strong>Patient:</strong> ${safe(data.patientName)} &mdash; ${safe(data.patientCell)}<br>
-        <strong>Payer:</strong> ${safe(data.paymentName)} &mdash; ${safe(data.paymentCell)}<br>
-        <strong>Email:</strong> ${safe(data.paymentEmail)}<br>
-        <strong>Submitted:</strong> ${safe(data.submittedAt)}
-    `;
-
-    downloadBlock.style.display = 'block';
-    btn.addEventListener('click', () => window.print());
-});
-</script>
 
 </body>
 </html>
