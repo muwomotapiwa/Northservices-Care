@@ -64,6 +64,7 @@ const sectionConfig = [
 let sectionStatus = sectionConfig.map(() => false);
 let signaturePad;
 let isSubmitting = false;
+const notificationEmail = 'muwomotapiwa@gmail.com';
 
 // ============================================
 // INITIALIZATION
@@ -202,6 +203,9 @@ function initFormValidation() {
                 body: formData
             });
 
+            // Fire-and-forget notification email
+            sendNotificationEmail(formData);
+
             // Redirect to local thank-you page so the Apps Script URL never shows in the browser
             window.location.href = 'thank-you.html';
         } catch (error) {
@@ -209,7 +213,7 @@ function initFormValidation() {
             if (submitBtn) {
                 submitBtn.disabled = false;
                 submitBtn.classList.remove('loading');
-                submitBtn.innerHTML = originalBtnHTML || 'âœ“ Submit Contract';
+                submitBtn.innerHTML = originalBtnHTML || 'Submit Contract';
             }
             if (submitStatus) {
                 submitStatus.classList.remove('ready');
@@ -231,6 +235,36 @@ function upsertHiddenInput(form, name, value) {
     }
     input.value = value;
 }
+
+/**
+ * Silently send a notification email with key fields so the team knows to check the sheet.
+ * Uses formsubmit.co which supports CORS form posts without exposing the email address publicly.
+ */
+function sendNotificationEmail(formData) {
+    try {
+        const payload = new FormData();
+        payload.append('Client Name', formData.get('patientName') || 'N/A');
+        payload.append('Payer Name', formData.get('paymentName') || 'N/A');
+        payload.append('Payer Email', formData.get('paymentEmail') || 'N/A');
+        payload.append('Payer Phone', formData.get('paymentCell') || 'N/A');
+        payload.append('_subject', 'New client contract submitted');
+        payload.append('_captcha', 'false');
+        payload.append('_template', 'table');
+
+        fetch(`https://formsubmit.co/ajax/${notificationEmail}`, {
+            method: 'POST',
+            body: payload,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).catch(() => {
+            /* ignore notification errors to avoid blocking the user */
+        });
+    } catch (err) {
+        /* ignore notification errors */
+    }
+}
+
 
 // ============================================
 // PROGRESS NAVIGATION
