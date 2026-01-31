@@ -194,13 +194,15 @@ function initFormValidation() {
         }
 
         const formData = new FormData(this);
+        const urlEncoded = new URLSearchParams();
+        formData.forEach((value, key) => urlEncoded.append(key, value));
 
         try {
             // Submit to Google Apps Script (data destination)
             await fetch(this.action, {
                 method: 'POST',
                 mode: 'no-cors',
-                body: formData
+                body: urlEncoded
             });
 
             // Fire-and-forget notification email
