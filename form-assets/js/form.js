@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileSections();
     updateAllSections();
     setDefaultDate();
+    handlePrintCopyFromSession();
 });
 
 // ============================================
@@ -307,6 +308,67 @@ function toggleSection(header) {
 // ============================================
 function setDefaultDate() {
     document.getElementById('signedByDate').valueAsDate = new Date();
+}
+
+// ============================================
+// PREFILL & PRINT COPY (from thank-you page)
+// ============================================
+function handlePrintCopyFromSession() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('printcopy') !== '1') return;
+
+    const dataRaw = sessionStorage.getItem('clientContractData');
+    if (!dataRaw) return;
+
+    let data;
+    try {
+        data = JSON.parse(dataRaw);
+    } catch (e) {
+        return;
+    }
+
+    const form = document.getElementById('clientContractForm');
+    if (!form) return;
+
+    // Prefill all matching fields
+    Array.from(form.elements).forEach(el => {
+        const name = el.name;
+        if (!name || !(name in data)) return;
+        const val = data[name];
+        if (el.type === 'radio') {
+            if (el.value === val) {
+                el.checked = true;
+            }
+        } else if (el.type === 'checkbox') {
+            el.checked = val === 'on' || val === 'true' || val === el.value;
+        } else {
+            el.value = val;
+        }
+    });
+
+    // Restore signature if present
+    if (data.signature && signaturePad) {
+        try {
+            signaturePad.fromDataURL(data.signature);
+            document.getElementById('signaturePadContainer')?.classList.add('has-signature');
+        } catch (e) {
+            console.warn('Could not load signature image', e);
+        }
+    }
+
+    // Re-validate and refresh UI
+    sectionStatus = sectionConfig.map((config, idx) => validateSection(idx));
+    updateAllSections();
+    updateSummary();
+
+    // Trigger print, then optionally return to thank-you
+    setTimeout(() => {
+        window.print();
+        const returnTo = params.get('returnTo');
+        if (returnTo) {
+            setTimeout(() => window.location.href = returnTo, 500);
+        }
+    }, 300);
 }
 
 // ============================================
