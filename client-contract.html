@@ -128,17 +128,17 @@
 
                                 <div class="form-group">
                                     <label class="required" for="patientName">Full Name</label>
-                                    <input type="text" id="patientName" class="form-control" placeholder="Patient's full name" required data-section="0">
+                                    <input type="text" id="patientName" name="patientName" class="form-control" placeholder="Patient's full name" required data-section="0">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="required" for="patientID">ID Number</label>
-                                    <input type="text" id="patientID" class="form-control" placeholder="ID Number" required data-section="0">
+                                    <input type="text" id="patientID" name="patientID" class="form-control" placeholder="ID Number" required data-section="0">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="required" for="patientAge">Age</label>
-                                    <input type="number" id="patientAge" class="form-control" placeholder="Age" required data-section="0" min="0" max="150">
+                                    <input type="number" id="patientAge" name="patientAge" class="form-control" placeholder="Age" required data-section="0" min="0" max="150">
                                 </div>
 
                                 <div class="form-group">
@@ -157,32 +157,32 @@
 
                                 <div class="form-group">
                                     <label class="required" for="patientCell">Cell Phone</label>
-                                    <input type="tel" id="patientCell" class="form-control" placeholder="Cell number" required data-section="0">
+                                    <input type="tel" id="patientCell" name="patientCell" class="form-control" placeholder="Cell number" required data-section="0">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="patientTelHome">Home Phone</label>
-                                    <input type="tel" id="patientTelHome" class="form-control" placeholder="Home number" data-section="0">
+                                    <input type="tel" id="patientTelHome" name="patientTelHome" class="form-control" placeholder="Home number" data-section="0">
                                 </div>
 
                                 <div class="form-group full-width">
                                     <label class="required" for="patientAddress">Address</label>
-                                    <textarea id="patientAddress" class="form-control" placeholder="Full address" rows="2" required data-section="0"></textarea>
+                                    <textarea id="patientAddress" name="patientAddress" class="form-control" placeholder="Full address" rows="2" required data-section="0"></textarea>
                                 </div>
 
                                 <div class="form-group full-width">
                                     <label for="medicalHistory">Medical History</label>
-                                    <textarea id="medicalHistory" class="form-control" placeholder="Medical conditions, surgeries, treatments" rows="2" data-section="0"></textarea>
+                                    <textarea id="medicalHistory" name="medicalHistory" class="form-control" placeholder="Medical conditions, surgeries, treatments" rows="2" data-section="0"></textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="allergies">Allergies</label>
-                                    <textarea id="allergies" class="form-control" placeholder="Known allergies" rows="2" data-section="0"></textarea>
+                                    <textarea id="allergies" name="allergies" class="form-control" placeholder="Known allergies" rows="2" data-section="0"></textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="doctorDetails">Doctor's Details</label>
-                                    <textarea id="doctorDetails" class="form-control" placeholder="Doctor name & contact" rows="2" data-section="0"></textarea>
+                                    <textarea id="doctorDetails" name="doctorDetails" class="form-control" placeholder="Doctor name & contact" rows="2" data-section="0"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -205,17 +205,17 @@
                             <div class="form-grid">
                                 <div class="form-group">
                                     <label class="required" for="family1Name">Name</label>
-                                    <input type="text" id="family1Name" class="form-control" placeholder="Family member's name" required data-section="1">
+                                    <input type="text" id="family1Name" name="family1Name" class="form-control" placeholder="Family member's name" required data-section="1">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="family1Relationship">Relationship</label>
-                                    <input type="text" id="family1Relationship" class="form-control" placeholder="e.g., Son, Daughter" data-section="1">
+                                    <input type="text" id="family1Relationship" name="family1Relationship" class="form-control" placeholder="e.g., Son, Daughter" data-section="1">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="required" for="family1Contact">Contact Number</label>
-                                    <input type="tel" id="family1Contact" class="form-control" placeholder="Phone number" required data-section="1">
+                                    <input type="tel" id="family1Contact" name="family1Contact" class="form-control" placeholder="Phone number" required data-section="1">
                                 </div>
                             </div>
                         </div>
@@ -238,17 +238,17 @@
                             <div class="form-grid">
                                 <div class="form-group">
                                     <label for="family2Name">Name</label>
-                                    <input type="text" id="family2Name" class="form-control" placeholder="Family member's name" data-section="2">
+                                    <input type="text" id="family2Name" name="family2Name" class="form-control" placeholder="Family member's name" data-section="2">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="family2Relationship">Relationship</label>
-                                    <input type="text" id="family2Relationship" class="form-control" placeholder="e.g., Son, Daughter" data-section="2">
+                                    <input type="text" id="family2Relationship" name="family2Relationship" class="form-control" placeholder="e.g., Son, Daughter" data-section="2">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="family2Contact">Contact Number</label>
-                                    <input type="tel" id="family2Contact" class="form-control" placeholder="Phone number" data-section="2">
+                                    <input type="tel" id="family2Contact" name="family2Contact" class="form-control" placeholder="Phone number" data-section="2">
                                 </div>
                             </div>
                         </div>
@@ -271,7 +271,7 @@
                             <div class="form-grid">
                                 <div class="form-group full-width">
                                     <label for="emergencyNumbers">Emergency Contact Numbers</label>
-                                    <textarea id="emergencyNumbers" class="form-control" placeholder="List emergency contact numbers" rows="2" data-section="3"></textarea>
+                                    <textarea id="emergencyNumbers" name="emergencyNumbers" class="form-control" placeholder="List emergency contact numbers" rows="2" data-section="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -315,57 +315,57 @@
 
                                 <div class="form-group">
                                     <label class="required" for="paymentName">Full Name</label>
-                                    <input type="text" id="paymentName" class="form-control" placeholder="Full name" required data-section="4">
+                                    <input type="text" id="paymentName" name="paymentName" class="form-control" placeholder="Full name" required data-section="4">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="required" for="paymentID">ID Number</label>
-                                    <input type="text" id="paymentID" class="form-control" placeholder="ID Number" required data-section="4">
+                                    <input type="text" id="paymentID" name="paymentID" class="form-control" placeholder="ID Number" required data-section="4">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="required" for="paymentCell">Cell Phone</label>
-                                    <input type="tel" id="paymentCell" class="form-control" placeholder="Cell phone" required data-section="4">
+                                    <input type="tel" id="paymentCell" name="paymentCell" class="form-control" placeholder="Cell phone" required data-section="4">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="paymentTelHome">Home Phone</label>
-                                    <input type="tel" id="paymentTelHome" class="form-control" placeholder="Home phone" data-section="4">
+                                    <input type="tel" id="paymentTelHome" name="paymentTelHome" class="form-control" placeholder="Home phone" data-section="4">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="paymentTelWork">Work Phone</label>
-                                    <input type="tel" id="paymentTelWork" class="form-control" placeholder="Work phone" data-section="4">
+                                    <input type="tel" id="paymentTelWork" name="paymentTelWork" class="form-control" placeholder="Work phone" data-section="4">
                                 </div>
 
                                 <div class="form-group full-width">
                                     <label class="required" for="paymentAddress">Address</label>
-                                    <textarea id="paymentAddress" class="form-control" placeholder="Full address" rows="2" required data-section="4"></textarea>
+                                    <textarea id="paymentAddress" name="paymentAddress" class="form-control" placeholder="Full address" rows="2" required data-section="4"></textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="required" for="paymentEmail">Email Address</label>
-                                    <input type="email" id="paymentEmail" class="form-control" placeholder="email@example.com" required data-section="4">
+                                    <input type="email" id="paymentEmail" name="paymentEmail" class="form-control" placeholder="email@example.com" required data-section="4">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="paymentVAT">VAT Number</label>
-                                    <input type="text" id="paymentVAT" class="form-control" placeholder="VAT Number" data-section="4">
+                                    <input type="text" id="paymentVAT" name="paymentVAT" class="form-control" placeholder="VAT Number" data-section="4">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="heardAbout">How did you hear about us?</label>
-                                    <input type="text" id="heardAbout" class="form-control" placeholder="Referral source" data-section="4">
+                                    <input type="text" id="heardAbout" name="heardAbout" class="form-control" placeholder="Referral source" data-section="4">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="costsQuoted">Costs & Hours Quoted</label>
-                                    <input type="text" id="costsQuoted" class="form-control" placeholder="Agreed costs" data-section="4">
+                                    <input type="text" id="costsQuoted" name="costsQuoted" class="form-control" placeholder="Agreed costs" data-section="4">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="shiftsRequired">Shifts Required</label>
-                                    <input type="text" id="shiftsRequired" class="form-control" placeholder="Required shifts" data-section="4">
+                                    <input type="text" id="shiftsRequired" name="shiftsRequired" class="form-control" placeholder="Required shifts" data-section="4">
                                 </div>
                             </div>
                         </div>
@@ -407,7 +407,7 @@
 
                             <div class="form-group" style="margin-top: 15px;">
                                 <label class="checkbox-option" style="padding: 12px;">
-                                    <input type="checkbox" id="agreeTerms" required data-section="5">
+                                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required data-section="5">
                                     <span>I confirm I have read, understood, and agree to all terms and conditions.</span>
                                 </label>
                             </div>
@@ -454,17 +454,17 @@
                                 <div class="form-grid">
                                     <div class="form-group">
                                         <label class="required" for="signedByName">Printed Name</label>
-                                        <input type="text" id="signedByName" class="form-control" placeholder="Your full name" required data-section="6">
+                                        <input type="text" id="signedByName" name="signedByName" class="form-control" placeholder="Your full name" required data-section="6">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="required" for="signedByDate">Date</label>
-                                        <input type="date" id="signedByDate" class="form-control" required data-section="6">
+                                        <input type="date" id="signedByDate" name="signedByDate" class="form-control" required data-section="6">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="witnessName">Witness Name</label>
-                                        <input type="text" id="witnessName" class="form-control" placeholder="Witness name" data-section="6">
+                                        <input type="text" id="witnessName" name="witnessName" class="form-control" placeholder="Witness name" data-section="6">
                                     </div>
                                 </div>
                             </div>
