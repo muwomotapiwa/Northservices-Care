@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!downloadBlock || !summary || !btn) return;
 
   const safe = (v) => (v ? v : 'N/A');
-  summary.innerHTML = `
-    <strong>Patient:</strong> ${safe(data.patientName)} — ${safe(data.patientCell)}<br>
-    <strong>Payer:</strong> ${safe(data.paymentName)} — ${safe(data.paymentCell)}<br>
-    <strong>Email:</strong> ${safe(data.paymentEmail)}<br>
-    <strong>Submitted:</strong> ${safe(data.submittedAt)}
-  `;
+  summary.style.whiteSpace = 'pre-line';
+  summary.textContent =
+    `Patient: ${safe(data.patientName)} — ${safe(data.patientCell)}\n` +
+    `Payer: ${safe(data.paymentName)} — ${safe(data.paymentCell)}\n` +
+    `Email: ${safe(data.paymentEmail)}\n` +
+    `Submitted: ${safe(data.submittedAt)}`;
 
   downloadBlock.style.display = 'block';
   btn.addEventListener('click', () => {
