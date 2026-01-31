@@ -179,8 +179,8 @@ function initFormValidation() {
         // Success message
         alert('Contract submitted successfully! Thank you for choosing NorthService Care.');
         
-        // In production, you would submit the form here
-        // this.submit();
+        // Submit to the form action (Formsubmit)
+        this.submit();
     });
 }
 
