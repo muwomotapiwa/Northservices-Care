@@ -148,8 +148,8 @@ function initFormValidation() {
     });
 
     // Form submission handler
-    document.getElementById('clientContractForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+document.getElementById('clientContractForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
         // Check if all required sections are complete
         const allComplete = sectionStatus.every((status, index) => status || sectionConfig[index].optional);
@@ -169,19 +169,27 @@ function initFormValidation() {
             return;
         }
 
-        // Add signature data to form
-        const signatureInput = document.createElement('input');
-        signatureInput.type = 'hidden';
-        signatureInput.name = 'signature';
-        signatureInput.value = signaturePad.toDataURL();
-        this.appendChild(signatureInput);
+        // Add signature data + timestamp to form (for Google Sheets)
+        upsertHiddenInput(this, 'signature', signaturePad.toDataURL());
+        upsertHiddenInput(this, 'submittedAt', new Date().toISOString());
 
         // Success message
         alert('Contract submitted successfully! Thank you for choosing NorthService Care.');
         
-        // Submit to the form action (Formsubmit)
+        // Submit to the form action (Google Apps Script web app)
         this.submit();
     });
+}
+
+function upsertHiddenInput(form, name, value) {
+    let input = form.querySelector(`input[name="${name}"]`);
+    if (!input) {
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        form.appendChild(input);
+    }
+    input.value = value;
 }
 
 // ============================================
