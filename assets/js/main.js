@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+﻿document.addEventListener('DOMContentLoaded', function () {
     // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.getElementById('navLinks');
@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const validators = {
             name: value => value.trim().length >= 2 ? '' : 'Please enter your full name.',
-            email: value => /^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,}$/i.test(value.trim()) ? '' : 'Enter a valid email address.',
-            phone: value => value.replace(/\\D/g, '').length >= 9 ? '' : 'Enter a valid phone number.',
+            email: value => /^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/i.test(value.trim()) ? '' : 'Enter a valid email address.',
+            phone: value => value.replace(/\D/g, '').length >= 9 ? '' : 'Enter a valid phone number.',
             message: value => value.trim().length >= 10 ? '' : 'Please provide a brief description of your needs.',
             agree: checked => checked ? '' : 'Please confirm you agree to the Terms and Privacy Policy.'
         };
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const clearStatus = () => {
             if (statusBox) {
-                statusBox.classList.remove('success', 'error');
+                statusBox.classList.remove('success', 'error', 'info');
                 statusBox.style.display = 'none';
                 statusBox.textContent = '';
             }
@@ -89,17 +89,29 @@ document.addEventListener('DOMContentLoaded', function () {
         const showStatus = (message, type = 'success') => {
             if (!statusBox) return;
             statusBox.textContent = message;
-            statusBox.classList.remove('success', 'error');
+            statusBox.classList.remove('success', 'error', 'info');
             statusBox.classList.add(type);
             statusBox.style.display = 'block';
         };
 
+        const setSubmitting = (isSubmitting) => {
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            if (!submitBtn) return;
+            submitBtn.disabled = isSubmitting;
+            submitBtn.textContent = isSubmitting ? 'Sending...' : 'Submit Inquiry';
+        };
+
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwL51VQqR-nyFUWoMxvVvRCXpDWbXFHQJit6Ig7pHFgLIIamcaTh2J-uKq3NMbYRk6GHA/exec';
+        const sheetTab = contactForm.dataset.sheetTab || 'ContactForm';
+
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             clearStatus();
+            setSubmitting(true);
 
             if (fields.honeypot && fields.honeypot.value.trim() !== '') {
                 showStatus('Submission blocked.', 'error');
+                setSubmitting(false);
                 return;
             }
 
@@ -114,17 +126,61 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (hasError) {
                 showStatus('Please correct the highlighted fields.', 'error');
+                setSubmitting(false);
                 return;
             }
 
             const name = fields.name?.value.trim() || 'there';
             const urgency = document.getElementById('urgency')?.value || 'Standard';
-            let responseTime = '2–4 hours';
+            const service = document.getElementById('service')?.value || 'General';
+            let responseTime = '2-4 hours';
             if (urgency === 'Emergency') responseTime = '15 minutes';
             if (urgency === 'Urgent') responseTime = '1 hour';
 
-            showStatus(`Thank you, ${name}! We have your inquiry. For ${urgency.toLowerCase()} requests, we aim to respond within ${responseTime}.`, 'success');
-            contactForm.reset();
+            if (!GOOGLE_SCRIPT_URL.includes('REPLACE_WITH_DEPLOYMENT_ID')) {
+                showStatus('Sending your message...', 'info');
+
+                const payload = {
+                    timestamp: new Date().toISOString(),
+                    name: fields.name?.value.trim(),
+                    email: fields.email?.value.trim(),
+                    phone: fields.phone?.value.trim(),
+                    service,
+                    urgency,
+                    message: fields.message?.value.trim(),
+                    page: window.location.href,
+                    sheetTab
+                };
+
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                    mode: 'cors',
+                    signal: controller.signal
+                })
+                    .then(res => {
+                        clearTimeout(timeoutId);
+                        if (!res.ok) throw new Error('Network response was not ok');
+                        return res.json().catch(() => ({}));
+                    })
+                    .then(data => {
+                        const message = data.message || `Thank you, ${name}! We have your inquiry. For ${urgency.toLowerCase()} requests, we aim to respond within ${responseTime}.`;
+                        showStatus(message, 'success');
+                        contactForm.reset();
+                    })
+                    .catch(err => {
+                        const fallback = 'We could not send your message right now. Please try again or call us.';
+                        showStatus(err.name === 'AbortError' ? 'Request timed out. Please try again.' : fallback, 'error');
+                    })
+                    .finally(() => setSubmitting(false));
+            } else {
+                showStatus('Form not connected yet. Please add your Google Apps Script URL.', 'error');
+                setSubmitting(false);
+            }
         });
 
         ['input', 'change', 'blur'].forEach(evt => {
