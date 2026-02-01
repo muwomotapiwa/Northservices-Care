@@ -101,7 +101,7 @@
             submitBtn.textContent = isSubmitting ? 'Sending...' : 'Submit Inquiry';
         };
 
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwL51VQqR-nyFUWoMxvVvRCXpDWbXFHQJit6Ig7pHFgLIIamcaTh2J-uKq3NMbYRk6GHA/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlPjNkzEIeezVLTBQpH4y3rMTklF6FHNBowDInjpEAxPJsRsz_T-l_EKA_bf03LHE9/exec';
         const sheetTab = contactForm.dataset.sheetTab || 'ContactForm';
 
         contactForm.addEventListener('submit', function (e) {
