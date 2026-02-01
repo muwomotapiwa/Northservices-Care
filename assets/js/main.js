@@ -154,10 +154,9 @@
                 fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     body: formData,
-                    mode: 'cors',
+                    mode: 'no-cors',
                     credentials: 'omit'
                 })
-                    .then(res => res.text().catch(() => ''))
                     .then(() => {
                         showStatus(`Thank you, ${name}! We have your inquiry. For ${urgency.toLowerCase()} requests, we aim to respond within ${responseTime}.`, 'success');
                         contactForm.reset();
