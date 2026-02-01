@@ -187,6 +187,11 @@
             contactForm.addEventListener(evt, () => clearStatus());
         });
     }
+
+    // FAQ toggles (Contact page)
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => toggleFAQ(question));
+    });
 });
 
 // FAQ toggle (Contact page)
