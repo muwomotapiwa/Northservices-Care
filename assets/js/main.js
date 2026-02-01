@@ -140,36 +140,26 @@
             if (!GOOGLE_SCRIPT_URL.includes('REPLACE_WITH_DEPLOYMENT_ID')) {
                 showStatus('Sending your message...', 'info');
 
-                const payload = {
-                    timestamp: new Date().toISOString(),
-                    name: fields.name?.value.trim(),
-                    email: fields.email?.value.trim(),
-                    phone: fields.phone?.value.trim(),
-                    service,
-                    urgency,
-                    message: fields.message?.value.trim(),
-                    page: window.location.href,
-                    sheetTab
-                };
-
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 10000);
+                const formData = new FormData();
+                formData.append('timestamp', new Date().toISOString());
+                formData.append('name', fields.name?.value.trim() || '');
+                formData.append('email', fields.email?.value.trim() || '');
+                formData.append('phone', fields.phone?.value.trim() || '');
+                formData.append('service', service);
+                formData.append('urgency', urgency);
+                formData.append('message', fields.message?.value.trim() || '');
+                formData.append('page', window.location.href);
+                formData.append('sheetTab', sheetTab);
 
                 fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload),
+                    body: formData,
                     mode: 'cors',
-                    signal: controller.signal
+                    credentials: 'omit'
                 })
-                    .then(res => {
-                        clearTimeout(timeoutId);
-                        if (!res.ok) throw new Error('Network response was not ok');
-                        return res.json().catch(() => ({}));
-                    })
-                    .then(data => {
-                        const message = data.message || `Thank you, ${name}! We have your inquiry. For ${urgency.toLowerCase()} requests, we aim to respond within ${responseTime}.`;
-                        showStatus(message, 'success');
+                    .then(res => res.text().catch(() => ''))
+                    .then(() => {
+                        showStatus(`Thank you, ${name}! We have your inquiry. For ${urgency.toLowerCase()} requests, we aim to respond within ${responseTime}.`, 'success');
                         contactForm.reset();
                     })
                     .catch(err => {
