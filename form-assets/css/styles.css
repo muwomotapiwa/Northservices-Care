@@ -1307,7 +1307,9 @@ textarea.form-control {
     .logo-container {
         flex-direction: row !important;
         justify-content: space-between !important;
-        align-items: center !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        gap: 0 !important;
     }
 
     .logo-left {
@@ -1334,17 +1336,34 @@ textarea.form-control {
     .company-name {
         font-size: 12pt !important;
         letter-spacing: 1px !important;
+        text-align: left !important;
     }
 
     .company-details {
         display: block !important;
         font-size: 7pt !important;
         margin-top: 1mm !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+    .company-details .detail-item {
+        display: inline-flex !important;
+        align-items: baseline !important;
+        gap: 1mm !important;
+        margin-right: 4mm !important;
+        white-space: nowrap !important;
+    }
+
+    .company-details .detail-item:last-child {
+        margin-right: 0 !important;
     }
 
     .company-reg {
         display: block !important;
         font-size: 6pt !important;
+        text-align: right !important;
+        margin-top: 0 !important;
     }
 
     .main-container {
