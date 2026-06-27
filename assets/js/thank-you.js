@@ -24,6 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   downloadBlock.style.display = 'block';
   btn.addEventListener('click', () => {
-    window.location.href = 'client-contract.html?printcopy=1&returnTo=thank-you.html';
+    window.location.href = 'client-contract?printcopy=1&returnTo=thank-you';
   });
 });

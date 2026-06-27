@@ -219,7 +219,7 @@ function initFormValidation() {
             await sendContractNotificationEmail(formDataObj);
 
             // Redirect to local thank-you page so the Apps Script URL never shows in the browser
-            window.location.href = 'thank-you.html';
+            window.location.href = 'thank-you';
         } catch (error) {
             isSubmitting = false;
             if (submitBtn) {
