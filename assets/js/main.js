@@ -40,6 +40,29 @@
         });
     }
 
+    // Why Us gallery reveal
+    const carePhotoCards = document.querySelectorAll('.care-photo-card');
+    if (carePhotoCards.length) {
+        document.querySelectorAll('.care-gallery-section').forEach(section => {
+            section.classList.add('reveal-enabled');
+        });
+
+        if ('IntersectionObserver' in window) {
+            const galleryObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.18 });
+
+            carePhotoCards.forEach(card => galleryObserver.observe(card));
+        } else {
+            carePhotoCards.forEach(card => card.classList.add('is-visible'));
+        }
+    }
+
     // Contact form handling (Contact page only)
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
@@ -101,8 +124,7 @@
             submitBtn.textContent = isSubmitting ? 'Sending...' : 'Submit Inquiry';
         };
 
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzOTxUMkVAaPuJX2O8L_0om2soCdikxRTahEEnbfl1n-qlBNc5MJfOJHfNJ1jcxpOBIhw/exec';
-        const sheetTab = contactForm.dataset.sheetTab || 'ContactForm';
+        const emailSubmitUrl = contactForm.getAttribute('action') || 'https://formsubmit.co/info@northservicescare.co.za';
 
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -137,39 +159,36 @@
             if (urgency === 'Emergency') responseTime = '15 minutes';
             if (urgency === 'Urgent') responseTime = '1 hour';
 
-            if (!GOOGLE_SCRIPT_URL.includes('REPLACE_WITH_DEPLOYMENT_ID')) {
-                showStatus('Sending your message...', 'info');
+            showStatus('Sending your message...', 'info');
 
-                const formData = new FormData();
-                formData.append('timestamp', new Date().toISOString());
-                formData.append('name', fields.name?.value.trim() || '');
-                formData.append('email', fields.email?.value.trim() || '');
-                formData.append('phone', fields.phone?.value.trim() || '');
-                formData.append('service', service);
-                formData.append('urgency', urgency);
-                formData.append('message', fields.message?.value.trim() || '');
-                formData.append('page', window.location.href);
-                formData.append('sheetTab', sheetTab);
+            const formData = new FormData(contactForm);
+            formData.set('timestamp', new Date().toISOString());
+            formData.set('name', fields.name?.value.trim() || '');
+            formData.set('email', fields.email?.value.trim() || '');
+            formData.set('_replyto', fields.email?.value.trim() || '');
+            formData.set('phone', fields.phone?.value.trim() || '');
+            formData.set('service', service);
+            formData.set('urgency', urgency);
+            formData.set('message', fields.message?.value.trim() || '');
+            formData.set('privacyConsent', 'Accepted Terms of Service and Privacy Policy');
+            formData.set('page', window.location.href);
+            formData.delete('website');
 
-                fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'no-cors',
-                    credentials: 'omit'
+            fetch(emailSubmitUrl, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors',
+                credentials: 'omit'
+            })
+                .then(() => {
+                    showStatus(`Thank you, ${name}! We have your inquiry. For ${urgency.toLowerCase()} requests, we aim to respond within ${responseTime}.`, 'success');
+                    contactForm.reset();
                 })
-                    .then(() => {
-                        showStatus(`Thank you, ${name}! We have your inquiry. For ${urgency.toLowerCase()} requests, we aim to respond within ${responseTime}.`, 'success');
-                        contactForm.reset();
-                    })
-                    .catch(err => {
-                        const fallback = 'We could not send your message right now. Please try again or call us.';
-                        showStatus(err.name === 'AbortError' ? 'Request timed out. Please try again.' : fallback, 'error');
-                    })
-                    .finally(() => setSubmitting(false));
-            } else {
-                showStatus('Form not connected yet. Please add your Google Apps Script URL.', 'error');
-                setSubmitting(false);
-            }
+                .catch(err => {
+                    const fallback = 'We could not send your message right now. Please try again or call us.';
+                    showStatus(err.name === 'AbortError' ? 'Request timed out. Please try again.' : fallback, 'error');
+                })
+                .finally(() => setSubmitting(false));
         });
 
         ['input', 'change', 'blur'].forEach(evt => {

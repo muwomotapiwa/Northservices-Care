@@ -64,6 +64,7 @@ const sectionConfig = [
 let sectionStatus = sectionConfig.map(() => false);
 let signaturePad;
 let isSubmitting = false;
+const notificationEmailEndpoint = 'https://formsubmit.co/info@northservicescare.co.za';
 
 // ============================================
 // INITIALIZATION
@@ -215,6 +216,8 @@ function initFormValidation() {
                 body: urlEncoded
             });
 
+            await sendContractNotificationEmail(formDataObj);
+
             // Redirect to local thank-you page so the Apps Script URL never shows in the browser
             window.location.href = 'thank-you.html';
         } catch (error) {
@@ -247,8 +250,36 @@ function upsertHiddenInput(form, name, value) {
 
 /**
  * Silently send a notification email with key fields so the team knows to check the sheet.
- * Uses formsubmit.co which supports CORS form posts without exposing the email address publicly.
  */
+async function sendContractNotificationEmail(data) {
+    const notificationData = new FormData();
+    notificationData.append('_subject', 'New client contract submission - NorthServices Care');
+    notificationData.append('_template', 'table');
+    notificationData.append('_captcha', 'false');
+    notificationData.append('Submission type', 'Client contract');
+    notificationData.append('Submitted at', new Date().toISOString());
+    notificationData.append('Patient name', data.patientName || '');
+    notificationData.append('Patient cell', data.patientCell || '');
+    notificationData.append('Family contact name', data.family1Name || '');
+    notificationData.append('Family contact number', data.family1Contact || '');
+    notificationData.append('Payment contact name', data.paymentName || '');
+    notificationData.append('Payment contact email', data.paymentEmail || '');
+    notificationData.append('Payment contact cell', data.paymentCell || '');
+    notificationData.append('Signed by', data.signedByName || '');
+    notificationData.append('Signed date', data.signedByDate || '');
+    notificationData.append('Next step', 'Review the full contract submission in the connected contract sheet.');
+
+    try {
+        await fetch(notificationEmailEndpoint, {
+            method: 'POST',
+            body: notificationData,
+            mode: 'no-cors',
+            credentials: 'omit'
+        });
+    } catch (error) {
+        console.warn('Contract notification email could not be sent:', error);
+    }
+}
 
 // ============================================
 // PROGRESS NAVIGATION

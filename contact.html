@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; script-src 'self'; img-src 'self' data: https://images.unsplash.com https://af6815798a.imgdist.com; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; script-src 'self'; img-src 'self' data: https://images.unsplash.com https://af6815798a.imgdist.com; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https://formsubmit.co; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Contact Us | NorthServices Care</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -62,7 +62,7 @@
                     <div class="contact-content">
                         <h3>General Enquiries</h3>
                         <p>For non-urgent matters, documentation, or detailed questions.</p>
-                        <p class="highlight">info@northservices.co.za</p>
+                        <p class="highlight">info@northservicescare.co.za</p>
                         <p><small>Response within 2-4 business hours</small></p>
                     </div>
                 </div>
@@ -96,7 +96,10 @@
 
         <div class="contact-form-container">
             <h2>Send Us a Message</h2>
-            <form id="contactForm" data-sheet-tab="ContactForm">
+            <form id="contactForm" action="https://formsubmit.co/info@northservicescare.co.za" method="POST" data-sheet-tab="ContactForm">
+                <input type="hidden" name="_subject" value="New website enquiry - NorthServices Care">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
                 <div class="honeypot" aria-hidden="true" style="position:absolute; left:-9999px; opacity:0; pointer-events:none;">
                     <label for="website">Leave this field empty</label>
                     <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -264,7 +267,7 @@
         </div>
         <div class="footer-contact-item">
             <h4>Email Address</h4>
-            <p>info@northservices.co.za</p>
+            <p>info@northservicescare.co.za</p>
         </div>
         <div class="footer-contact-item">
             <h4>Co. Reg. No.</h4>
